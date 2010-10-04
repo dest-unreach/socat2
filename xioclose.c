@@ -142,7 +142,7 @@ int xioclose(xiofile_t *file) {
    } else {
       result = xioclose1(&file->stream);
    }
-   if (xfd->stream.subthread != 0) {
+   if (xfd->tag != XIO_TAG_INVALID && xfd->stream.subthread != 0) {
       Pthread_join(xfd->stream.subthread, NULL);
    }
    return result;
